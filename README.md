@@ -1,12 +1,14 @@
 # Clase 5 - Code First
 
-Proyecto de demostración para la clase 5 sobre Entity Framework Core (Code First).
+API demostrativa de Entity Framework Core (Code First).
 
-## Requisitos
-- .NET 8.0 SDK o superior
+## Configuración Inicial
+Prepara el archivo de configuración a partir del ejemplo proporcionado:
+```bash
+cp appsettings.Example.json appsettings.json
+```
 
 ## Ejecución
-Para ejecutar el proyecto:
 ```bash
 dotnet run
 ```
