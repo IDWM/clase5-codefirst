@@ -24,6 +24,9 @@ using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     context.Database.Migrate();
+
+    // Poblar la base de datos con Bogus si está vacía
+    DatabaseSeeder.Seed(context);
 }
 
 app.MapControllers();
