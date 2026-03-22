@@ -486,3 +486,6 @@ $RECYCLE.BIN/
 # appsettings
 appsettings*.json
 !appsettings.Example.json
+
+# SQLite
+*.db*

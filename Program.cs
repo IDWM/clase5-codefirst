@@ -18,6 +18,14 @@ builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<OrderValidator>();
 
 var app = builder.Build();
+
+// Generar base de datos automáticamente si no existe y aplicar migraciones
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    context.Database.Migrate();
+}
+
 app.MapControllers();
 
 app.Run();
