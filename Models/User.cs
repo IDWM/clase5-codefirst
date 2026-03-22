@@ -16,5 +16,5 @@ public class User
     public DateTime BirthDate { get; set; }
 
     // Propiedad de Navegación (Un Usuario tiene Muchos Pedidos)
-    public List<Order> Orders { get; set; } = new List<Order>();
+    public virtual List<Order> Orders { get; set; } = new List<Order>();
 }

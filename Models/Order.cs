@@ -9,5 +9,5 @@ public class Order
     public DateTime Date { get; set; }
 
     // Propiedad de Navegación (Un Pedido pertenece a Un Usuario)
-    public User? User { get; set; }
+    public virtual User? User { get; set; }
 }
