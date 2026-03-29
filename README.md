@@ -19,6 +19,7 @@ Ejecuta un demo con un argumento del `1` al `10`:
 ```bash
 dotnet run -- 1
 ```
+
 | Número | Tema |
 |--------|------|
 | 1 | LINQ: sintaxis de consulta (estilo SQL) |
