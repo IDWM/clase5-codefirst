@@ -15,6 +15,19 @@ Comandos manuales útiles para Entity Framework Core:
 - **Eliminar:** `dotnet ef database drop`
 
 ## Ejecución
+Ejecuta un demo con un argumento del `1` al `10`:
 ```bash
-dotnet run
+dotnet run -- 1
 ```
+| Número | Tema |
+|--------|------|
+| 1 | LINQ: sintaxis de consulta (estilo SQL) |
+| 2 | LINQ: sintaxis de métodos |
+| 3 | Joins entre entidades |
+| 4 | Propiedades de navegación |
+| 5 | Carga ansiosa (*eager loading* con `Include`) |
+| 6 | Carga explícita (`Load`) |
+| 7 | Carga diferida (*lazy loading*) |
+| 8 | Problema N+1 |
+| 9 | Evaluación en cliente vs servidor (dónde va `ToList()`; revisa el SQL en consola) |
+| 10 | Inyección SQL y `FromSqlRaw` |
