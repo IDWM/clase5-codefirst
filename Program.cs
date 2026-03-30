@@ -3,8 +3,6 @@ using clase5_codefirst.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics; // Added for DbLoggerCategory
-using Microsoft.Extensions.Logging; // Added for LogLevel
 
 var builder = WebApplication.CreateBuilder(args);
 

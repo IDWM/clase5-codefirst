@@ -1,6 +1,4 @@
-using System.Linq;
 using clase5_codefirst.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace clase5_codefirst.Demos;
 
