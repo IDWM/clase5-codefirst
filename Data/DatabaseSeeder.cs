@@ -1,13 +1,11 @@
-using System.Text;
 using Bogus;
 using clase5_codefirst.Models;
-using FluentValidation;
 
 namespace clase5_codefirst.Data;
 
 public static class DatabaseSeeder
 {
-    public static void Seed(ApplicationDbContext context, IValidator<Order> orderValidator)
+    public static void Seed(ApplicationDbContext context)
     {
         if (!context.Users.Any())
         {
@@ -47,62 +45,6 @@ public static class DatabaseSeeder
             {
                 var orders = orderFaker.GenerateBetween(1, 5);
                 user.Orders = orders;
-            }
-
-            var validationErrors = new List<string>();
-            for (var userIndex = 0; userIndex < users.Count; userIndex++)
-            {
-                var user = users[userIndex];
-
-                var userValidationResults =
-                    new List<System.ComponentModel.DataAnnotations.ValidationResult>();
-                var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(
-                    user
-                );
-                var isUserValid = System.ComponentModel.DataAnnotations.Validator.TryValidateObject(
-                    user,
-                    validationContext,
-                    userValidationResults,
-                    validateAllProperties: true
-                );
-
-                if (!isUserValid)
-                {
-                    foreach (var validationResult in userValidationResults)
-                    {
-                        validationErrors.Add(
-                            $"User[{userIndex}] RUT '{user.Rut}': {validationResult.ErrorMessage}"
-                        );
-                    }
-                }
-
-                for (var orderIndex = 0; orderIndex < user.Orders.Count; orderIndex++)
-                {
-                    var order = user.Orders[orderIndex];
-                    var orderValidation = orderValidator.Validate(order);
-                    if (!orderValidation.IsValid)
-                    {
-                        foreach (var error in orderValidation.Errors)
-                        {
-                            validationErrors.Add(
-                                $"User[{userIndex}] Order[{orderIndex}] ({error.PropertyName}): {error.ErrorMessage}"
-                            );
-                        }
-                    }
-                }
-            }
-
-            if (validationErrors.Count > 0)
-            {
-                var messageBuilder = new StringBuilder();
-                messageBuilder.AppendLine("Seed validation failed:");
-                foreach (var error in validationErrors)
-                {
-                    messageBuilder.AppendLine($"- {error}");
-                }
-                throw new System.ComponentModel.DataAnnotations.ValidationException(
-                    messageBuilder.ToString()
-                );
             }
 
             context.Users.AddRange(users);

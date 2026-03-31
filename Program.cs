@@ -1,5 +1,4 @@
 using clase5_codefirst.Data;
-using clase5_codefirst.Models;
 using clase5_codefirst.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -26,11 +25,10 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    var orderValidator = scope.ServiceProvider.GetRequiredService<IValidator<Order>>();
     context.Database.Migrate();
 
     // Poblar la base de datos con Bogus si está vacía
-    DatabaseSeeder.Seed(context, orderValidator);
+    DatabaseSeeder.Seed(context);
 }
 
 // Bloque de Ejecución de Demos por Consola
